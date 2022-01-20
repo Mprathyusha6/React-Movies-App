@@ -9,7 +9,7 @@ export default function Navbar(){
     return(
     <nav>
         <ul>
-             <li><a href='#'><h2>CINEMAdb</h2></a></li>
+        <Link to="/"><li><h2>CINEMAdb</h2></li></Link>
         </ul>
         <ul>
             
@@ -19,8 +19,9 @@ export default function Navbar(){
             
         </ul>
         <ul>
-        <Link to="/components/wishlist">  <li>Watchlist</li></Link>
-        <li>Watched</li>
+        <Link to="/components/WatchList">  <li>Watchlist</li></Link>
+        <Link to="/components/WatchedList">  <li>Watched</li></Link>
+        
            
             
         </ul>

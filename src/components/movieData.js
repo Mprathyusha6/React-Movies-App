@@ -7,7 +7,7 @@ const movieInfo=
                 Title: "Finding Neverland",
                 img: "https://i.imgflip.com/3pnmg.jpg",
                 date: 3,
-                status: ""
+                status: "WatchedList"
 
             },
             {
@@ -15,7 +15,7 @@ const movieInfo=
                 Title: "Spongebob Ight Imma Head Out",
                 img: "https://i.imgflip.com/392xtu.jpg",
                 date: 2, 
-                status : ""
+                status : "WatchList"
             },
             {
                 id: 3,

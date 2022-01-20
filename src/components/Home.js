@@ -1,41 +1,37 @@
-import React from "react";
+import React,{useContext} from "react";
 import Header from './Header';
 import Card from './Card';
 import { useState } from "react";
-import movieInfo from "./movieData";
+import { MovieContext } from "../App";
 
 export default function Home(){
-    const {data,setData} = useState({movieInfo})
-    // console.log(movieInfo);
-    // const ContactElements = MovieData.map(item => {
-    //     return <Card 
-    //     key={item.id}
-    //     {...item}
-    //     />
-    // })
-    // function handleOnchange(e) {
-    //     setTimeout(function() { //Start the timer
-            
-    //     setData(prev => {
-    //         return {
-    //             ...prev,
-    //             status: e.target.value
-    //         }
-    //     })//After 1 second, set render to true
-    //     }.bind(this), 500)
-    
-    // }
-
+    const movieInfo=useContext(MovieContext)
+    const [Searchvalue,setData] = useState('')
+    const SearchBar=()=>{
+         const name=document.getElementById('Search').value
+          setData(prev=>{
+              return name   
+          }) 
+        }
+        console.log('Home')
+            console.log(  movieInfo.Contextdata) 
+        
     return(
         <div>
-            <Header/>
+            <Header onClick={SearchBar}/>
             <div className="flex">
+            <h1>Hello</h1>
             {
-                movieInfo.map(item=>{
-                    return <Card key={item.id} {...item} />
+            
+            movieInfo.Contextdata.filter(function(item){
                     
-                })
-                
+                return item.Title.toLocaleLowerCase().includes(Searchvalue.toLocaleLowerCase());
+             }).map(item=>{
+            return <Card key={item.id} {...item}  />
+            
+        })
+             
+        
     
             }
             </div>
@@ -45,3 +41,4 @@ export default function Home(){
     );
 
 }
+
