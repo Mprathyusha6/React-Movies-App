@@ -20,7 +20,7 @@ export default function Home(){
         <div>
             <Header onClick={SearchBar}/>
             <div className="flex">
-            <h1>Hello</h1>
+            
             {
             
             movieInfo.Contextdata.filter(function(item){
