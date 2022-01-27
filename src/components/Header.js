@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Header({onClick,inputref}) {
+export default function Header({ onClick, inputref }) {
   return (
     <div className="banner">
       <h1>Welcome.</h1>

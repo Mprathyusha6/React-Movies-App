@@ -10,7 +10,7 @@ export default function Home() {
   const [inputvalue, setInputvalue] = useState("");
 
   const SearchBar = () => {
-const name =textInput.current.value;
+    const name = textInput.current.value;
     setInputvalue((prev) => {
       return name;
     });
