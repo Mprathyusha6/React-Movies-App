@@ -1,29 +1,19 @@
-import React,{useContext} from 'react';
-import Card from './Card';
-import { MovieContext } from '../App';
- 
-  
-export default function Watchlist(){
-  const movieInfo=useContext(MovieContext)
-  return(
+import React, { useContext } from "react";
+import Card from "./Card";
+import { MovieContext } from "../App";
 
+export default function Watchlist() {
+  const movieInfo = useContext(MovieContext);
+  return (
     <div>
-    
-    <div className="flex">
-    {
-            movieInfo.Contextdata.filter(function(item){
-         return item.status === 'WatchList';
-      }).map(item=>{
-            return <Card key={item.id} {...item} />
-            
-        })
-        
-    }
-    
+      <div className="flex">
+        {movieInfo.Contextdata.filter(function (item) {
+          return item.status === "WatchList";
+        }).map((item) => {
+          return <Card key={item.id} {...item} />;
+        })}
+      </div>
     </div>
-
-  
-</div>
   );
 }
 
