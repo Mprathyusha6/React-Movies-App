@@ -16,25 +16,22 @@ function isExists(arr, id) {
     return el.id === id;
   });
 }
-const updatetwoLists=(state,action)=>{
-  let WatchedListitems=state.WatchedList
-  let WatchListitems=state.Watchlist
+const updatetwoLists = (state, action) => {
+  let WatchedListitems = state.WatchedList;
+  let WatchListitems = state.Watchlist;
   if (isExists(state.WatchedList, action.id)) {
     WatchedListitems = state.WatchedList.filter(
       (item) => item.id !== action.id
     );
+  } else if (isExists(state.Watchlist, action.id)) {
+    WatchListitems = state.Watchlist.filter((item) => item.id !== action.id);
   }
-  else if (isExists(state.Watchlist, action.id)) {
-    WatchListitems = state.Watchlist.filter(
-      (item) => item.id !== action.id
-    );
-  }
-return {
-  ...state,
-  Watchlist:WatchListitems,
-  WatchedList:WatchedListitems
-}
-}
+  return {
+    ...state,
+    Watchlist: WatchListitems,
+    WatchedList: WatchedListitems,
+  };
+};
 const updateWatchList = (state, action) => {
   if (!isExists(state.Watchlist, action.id)) {
     let WatchedListitems = state.WatchedList;
@@ -53,7 +50,6 @@ const updateWatchList = (state, action) => {
   }
 };
 const updatedWatchedList = (state, action) => {
-  
   if (!isExists(state.WatchedList, action.id)) {
     let WatchListitems = state.Watchlist;
     if (isExists(state.Watchlist, action.id)) {
@@ -71,7 +67,7 @@ const updatedWatchedList = (state, action) => {
 const reducer = (state, action) => {
   switch (action.type) {
     case "none":
-      return updatetwoLists(state,action)
+      return updatetwoLists(state, action);
     case "WatchList":
       return updateWatchList(state, action);
     case "WatchedList":
