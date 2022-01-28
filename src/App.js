@@ -9,14 +9,29 @@ import WatchedList from "./components/WatchedList";
 import MovieData from "./components/movieData";
 
 export const MovieContext = createContext({});
-const initialstate = { AllData: MovieData, Watchlist: [], WatchedList: [] };
+const initialstate = {
+  AllData: MovieData,
+  searchResult: [],
+  Watchlist: [],
+  WatchedList: [],
+};
+const handleSubmit = (state, action) => {
+  
+  return{
+    ...state,
+    searchResult: state.AllData.filter(function (item) {
+    return item.Title.toLocaleLowerCase().includes(
+      action.inputvalue.toLocaleLowerCase()
+    );
+  })}
+};
 
 function isExists(arr, id) {
   return arr.some(function (el) {
     return el.id === id;
   });
 }
-const updatetwoLists = (state, action) => {
+const removeFromWatchAndWatchedlists = (state, action) => {
   let WatchedListitems = state.WatchedList;
   let WatchListitems = state.Watchlist;
   if (isExists(state.WatchedList, action.id)) {
@@ -32,7 +47,7 @@ const updatetwoLists = (state, action) => {
     WatchedList: WatchedListitems,
   };
 };
-const updateWatchList = (state, action) => {
+const addToWatchlist = (state, action) => {
   if (!isExists(state.Watchlist, action.id)) {
     let WatchedListitems = state.WatchedList;
     if (isExists(state.WatchedList, action.id)) {
@@ -49,7 +64,7 @@ const updateWatchList = (state, action) => {
     return state;
   }
 };
-const updatedWatchedList = (state, action) => {
+const addToWatchedList = (state, action) => {
   if (!isExists(state.WatchedList, action.id)) {
     let WatchListitems = state.Watchlist;
     if (isExists(state.Watchlist, action.id)) {
@@ -66,12 +81,15 @@ const updatedWatchedList = (state, action) => {
 };
 const reducer = (state, action) => {
   switch (action.type) {
+    case "Search":
+      return  handleSubmit(state, action);
+    
     case "none":
-      return updatetwoLists(state, action);
+      return removeFromWatchAndWatchedlists(state, action);
     case "WatchList":
-      return updateWatchList(state, action);
+      return addToWatchlist(state, action);
     case "WatchedList":
-      return updatedWatchedList(state, action);
+      return addToWatchedList(state, action);
 
     default:
       return state;

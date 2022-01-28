@@ -1,6 +1,10 @@
-import React from "react";
+import React,{useState,useContext} from "react";
+import { MovieContext } from "../App";
 
-export default function Header({ onClick, inputref }) {
+export default function Header() {
+  const movieInfo = useContext(MovieContext);
+  const [inputvalue, setInputvalue] = useState("");
+ 
   return (
     <div className="banner">
       <h1>Welcome.</h1>
@@ -8,10 +12,10 @@ export default function Header({ onClick, inputref }) {
       <div>
         <input
           type="text"
-          ref={inputref}
+          onChange={event => setInputvalue(event.target.value)}
           placeholder="Search for a movie, TV show or artist"
         />
-        <input type="button" onClick={onClick} value="Search" />
+        <input type="button" onClick={(e)=> movieInfo.ContextDispatch({ type:"Search",inputvalue:inputvalue})} value="Search" />
       </div>
     </div>
   );
