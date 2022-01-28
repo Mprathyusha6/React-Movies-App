@@ -19,7 +19,7 @@ export default function Home() {
     <div>
       <Header inputref={textInput} onClick={SearchBar} />
       <div className="flex">
-        {movieInfo.Contextdata.filter(function (item) {
+        {movieInfo.Contextdata.AllData.filter(function (item) {
           return item.Title.toLocaleLowerCase().includes(
             inputvalue.toLocaleLowerCase()
           );

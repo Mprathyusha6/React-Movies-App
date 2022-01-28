@@ -8,9 +8,7 @@ export default function WatchedList() {
   return (
     <div>
       <div className="flex">
-        {movieInfo.Contextdata.filter(function (item) {
-          return item.status === "WatchedList";
-        }).map((item) => {
+        {movieInfo.Contextdata.WatchedList.map((item) => {
           return <Card key={item.id} {...item} />;
         })}
       </div>

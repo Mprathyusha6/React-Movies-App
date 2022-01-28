@@ -13,7 +13,7 @@ export default function Card(props) {
       <div className="dropdown">
         <select
           onChange={(e) =>
-            movieInfo.ContextDispatch({ type: e.target.value, id: props.id })
+            movieInfo.ContextDispatch({ type: e.target.value, id: props.id,movie:props })
           }
         >
           <option value="" disabled="">
